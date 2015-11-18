@@ -77,10 +77,12 @@ public class BaseComponentSpec implements ComponentSpecInternal {
         sources = ModelMaps.addModelMapNode(modelNode, LanguageSourceSet.class, "sources");
     }
 
+    @Override
     public String getName() {
         return identifier.getName();
     }
 
+    @Override
     public String getProjectPath() {
         return identifier.getProjectPath();
     }
@@ -89,6 +91,7 @@ public class BaseComponentSpec implements ComponentSpecInternal {
         return typeName;
     }
 
+    @Override
     public String getDisplayName() {
         return String.format("%s '%s'", getTypeName(), getName());
     }
@@ -124,6 +127,7 @@ public class BaseComponentSpec implements ComponentSpecInternal {
         action.execute(getBinaries());
     }
 
+    @Override
     public Set<? extends Class<? extends TransformationFileType>> getInputTypes() {
         return Collections.emptySet();
     }

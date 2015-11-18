@@ -17,11 +17,18 @@
 package org.gradle.nativeplatform.test.googletest;
 
 import org.gradle.api.Incubating;
+import org.gradle.model.Managed;
 import org.gradle.nativeplatform.test.NativeTestSuiteSpec;
 
 /**
  * Test suite of Google Test tests.
  */
+@Managed
 @Incubating
-public interface GoogleTestTestSuiteSpec extends NativeTestSuiteSpec {
+public abstract class GoogleTestTestSuiteSpec implements NativeTestSuiteSpec {
+
+    public String getDisplayName() {
+        return String.format("googleTest test suite '%s'", getName());
+    }
+
 }

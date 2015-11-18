@@ -39,7 +39,7 @@ public abstract class DefaultNativeTestSuiteBinarySpec extends AbstractNativeBin
 
     @Override
     public NativeTestSuiteSpec getComponent() {
-        return (NativeTestSuiteSpec) super.getComponent();
+        return getComponentAs(NativeTestSuiteSpec.class);
     }
 
     public NativeBinarySpec getTestedBinary() {

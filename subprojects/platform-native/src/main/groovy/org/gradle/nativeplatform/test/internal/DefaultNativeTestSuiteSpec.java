@@ -13,24 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gradle.nativeplatform.test.googletest.internal;
+
+package org.gradle.nativeplatform.test.internal;
 
 import org.gradle.nativeplatform.NativeComponentSpec;
 import org.gradle.nativeplatform.internal.AbstractNativeComponentSpec;
-import org.gradle.nativeplatform.test.googletest.GoogleTestTestSuiteSpec;
+import org.gradle.nativeplatform.test.NativeTestSuiteSpec;
 
-public class DefaultGoogleTestTestSuiteSpec extends AbstractNativeComponentSpec implements GoogleTestTestSuiteSpec {
+public class DefaultNativeTestSuiteSpec extends AbstractNativeComponentSpec implements NativeTestSuiteSpec {
+
     private NativeComponentSpec testedComponent;
 
-    public String getDisplayName() {
-        return String.format("googleTest test suite '%s'", getName());
-    }
-
+    @Override
     public NativeComponentSpec getTestedComponent() {
         return testedComponent;
     }
 
+    @Override
     public void setTestedComponent(NativeComponentSpec testedComponent) {
         this.testedComponent = testedComponent;
     }
+
 }

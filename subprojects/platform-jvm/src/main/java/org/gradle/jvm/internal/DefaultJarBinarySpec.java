@@ -52,7 +52,7 @@ public class DefaultJarBinarySpec extends BaseBinarySpec implements JarBinarySpe
 
     @Override
     public LibraryBinaryIdentifier getId() {
-        ComponentSpec component = getComponent();
+        ComponentSpec component = getComponentAs(ComponentSpec.class);
         return new DefaultLibraryBinaryIdentifier(component.getProjectPath(), component.getName(), getName());
     }
 

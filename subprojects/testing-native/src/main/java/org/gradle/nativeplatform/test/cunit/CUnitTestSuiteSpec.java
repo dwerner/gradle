@@ -16,11 +16,19 @@
 package org.gradle.nativeplatform.test.cunit;
 
 import org.gradle.api.Incubating;
+import org.gradle.model.Managed;
 import org.gradle.nativeplatform.test.NativeTestSuiteSpec;
 
 /**
  * Test suite of CUnit tests.
  */
+@Managed
 @Incubating
-public interface CUnitTestSuiteSpec extends NativeTestSuiteSpec {
+public abstract class CUnitTestSuiteSpec implements NativeTestSuiteSpec {
+
+    @Override
+    public String getDisplayName() {
+        return String.format("cunit test suite '%s'", getName());
+    }
+
 }

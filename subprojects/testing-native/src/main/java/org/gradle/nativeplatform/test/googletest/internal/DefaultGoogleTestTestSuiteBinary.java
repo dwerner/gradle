@@ -28,6 +28,6 @@ public class DefaultGoogleTestTestSuiteBinary extends DefaultNativeTestSuiteBina
 
     @Override
     public GoogleTestTestSuiteSpec getComponent() {
-        return (GoogleTestTestSuiteSpec) super.getComponent();
+        return getComponentAs(GoogleTestTestSuiteSpec.class);
     }
 }

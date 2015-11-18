@@ -28,6 +28,6 @@ public class DefaultCUnitTestSuiteBinary extends DefaultNativeTestSuiteBinarySpe
 
     @Override
     public CUnitTestSuiteSpec getComponent() {
-        return (CUnitTestSuiteSpec) super.getComponent();
+        return getComponentAs(CUnitTestSuiteSpec.class);
     }
 }

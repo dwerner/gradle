@@ -32,7 +32,7 @@ import java.util.Set;
 public abstract class AbstractNativeLibraryBinarySpec extends AbstractNativeBinarySpec implements LibraryBinarySpec {
     @Override
     public NativeLibrarySpec getComponent() {
-        return (NativeLibrarySpec) super.getComponent();
+        return getComponentAs(NativeLibrarySpec.class);
     }
 
     @Override
