@@ -25,7 +25,7 @@ import java.util.List;
 @ThreadSafe
 abstract public class MethodModelRuleExtractors {
 
-    public static List<MethodModelRuleExtractor> coreExtractors(ModelSchemaStore modelSchemaStore) {
+    public static List<MethodModelRuleExtractor> coreExtractorsFor(ModelSchemaStore modelSchemaStore) {
         return ImmutableList.<MethodModelRuleExtractor>of(
             new UnmanagedModelCreationRuleExtractor(),
             new ServiceModelCreationRuleExtractor(),

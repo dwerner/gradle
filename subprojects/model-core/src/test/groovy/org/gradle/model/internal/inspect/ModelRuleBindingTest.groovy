@@ -27,11 +27,13 @@ import org.gradle.model.internal.type.ModelType
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import static org.gradle.model.internal.inspect.MethodModelRuleExtractors.coreExtractorsFor
+
 /**
  * Test the binding of rules by the registry.
  */
 class ModelRuleBindingTest extends Specification {
-    def extractor = new ModelRuleExtractor(MethodModelRuleExtractors.coreExtractors(DefaultModelSchemaStore.instance))
+    def extractor = new ModelRuleExtractor(coreExtractorsFor(DefaultModelSchemaStore.instance))
     def modelRegistry = new DefaultModelRegistry(extractor)
 
     static class AmbiguousBindingsInOneSource extends RuleSource {

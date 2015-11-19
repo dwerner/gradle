@@ -69,6 +69,8 @@ import org.gradle.model.internal.persist.ReusingModelRegistryStore;
 
 import java.util.List;
 
+import static org.gradle.model.internal.inspect.MethodModelRuleExtractors.coreExtractorsFor;
+
 /**
  * Defines the global services shared by all services in a given process. This includes the Gradle CLI, daemon and tooling API provider.
  */
@@ -203,7 +205,7 @@ public class GlobalScopeServices {
 
     ModelRuleExtractor createModelRuleInspector(ServiceRegistry services, ModelSchemaStore modelSchemaStore) {
         List<MethodModelRuleExtractor> extractors = services.getAll(MethodModelRuleExtractor.class);
-        List<MethodModelRuleExtractor> coreExtractors = MethodModelRuleExtractors.coreExtractors(modelSchemaStore);
+        List<MethodModelRuleExtractor> coreExtractors = coreExtractorsFor(modelSchemaStore);
         return new ModelRuleExtractor(Iterables.concat(coreExtractors, extractors));
     }
 

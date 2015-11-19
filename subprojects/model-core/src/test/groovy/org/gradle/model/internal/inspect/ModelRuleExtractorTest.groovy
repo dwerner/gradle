@@ -31,9 +31,11 @@ import spock.lang.Unroll
 
 import java.beans.Introspector
 
+import static org.gradle.model.internal.inspect.MethodModelRuleExtractors.coreExtractorsFor
+
 class ModelRuleExtractorTest extends Specification {
     ModelRegistry registry = new DefaultModelRegistry(null)
-    def extractor = new ModelRuleExtractor(MethodModelRuleExtractors.coreExtractors(DefaultModelSchemaStore.instance))
+    def extractor = new ModelRuleExtractor(coreExtractorsFor(DefaultModelSchemaStore.instance))
 
     static class ModelThing {
         final String name

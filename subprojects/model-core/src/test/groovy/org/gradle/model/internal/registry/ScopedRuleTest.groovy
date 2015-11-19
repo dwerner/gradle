@@ -30,9 +30,11 @@ import org.gradle.model.internal.inspect.ModelRuleExtractor
 import org.gradle.model.internal.manage.schema.extract.DefaultModelSchemaStore
 import spock.lang.Specification
 
+import static org.gradle.model.internal.inspect.MethodModelRuleExtractors.coreExtractorsFor
+
 class ScopedRuleTest extends Specification {
 
-    def extractors = [new DependencyAddingModelRuleExtractor()] + MethodModelRuleExtractors.coreExtractors(DefaultModelSchemaStore.getInstance())
+    def extractors = [new DependencyAddingModelRuleExtractor()] + coreExtractorsFor(DefaultModelSchemaStore.instance)
     def registry = new ModelRegistryHelper(new ModelRuleExtractor(extractors))
 
     static class RuleSourceUsingRuleWithDependencies extends RuleSource {

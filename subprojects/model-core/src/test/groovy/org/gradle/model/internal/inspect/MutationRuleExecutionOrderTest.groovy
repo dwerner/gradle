@@ -24,8 +24,10 @@ import org.gradle.model.internal.fixture.ModelRegistryHelper
 import org.gradle.model.internal.manage.schema.extract.DefaultModelSchemaStore
 import spock.lang.Specification
 
+import static org.gradle.model.internal.inspect.MethodModelRuleExtractors.coreExtractorsFor
+
 class MutationRuleExecutionOrderTest extends Specification {
-    def extractor = new ModelRuleExtractor(MethodModelRuleExtractors.coreExtractors(DefaultModelSchemaStore.instance))
+    def extractor = new ModelRuleExtractor(coreExtractorsFor(DefaultModelSchemaStore.instance))
     def modelRegistry = new ModelRegistryHelper(extractor)
 
     static class MutationRecorder {
