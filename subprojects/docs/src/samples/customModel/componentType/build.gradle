@@ -16,9 +16,11 @@
  */
 
 @Managed
-trait ImageComponent implements LibrarySpec {
-    String title
-    List<String> sizes
+interface ImageComponent extends LibrarySpec {
+    String getTitle()
+    void setTitle(String title)
+    List<String> getSizes()
+    void setSizes(List<String> sizes)
 }
 
 interface ImageBinary extends BinarySpec {
