@@ -28,12 +28,10 @@ import org.gradle.language.c.CSourceSet;
 import org.gradle.language.c.plugins.CLangPlugin;
 import org.gradle.model.*;
 import org.gradle.nativeplatform.NativeComponentSpec;
-import org.gradle.nativeplatform.test.NativeTestSuiteSpec;
 import org.gradle.nativeplatform.test.cunit.CUnitTestSuiteBinarySpec;
 import org.gradle.nativeplatform.test.cunit.CUnitTestSuiteSpec;
 import org.gradle.nativeplatform.test.cunit.internal.DefaultCUnitTestSuiteBinary;
 import org.gradle.nativeplatform.test.cunit.tasks.GenerateCUnitLauncher;
-import org.gradle.nativeplatform.test.internal.DefaultNativeTestSuiteSpec;
 import org.gradle.nativeplatform.test.plugins.NativeBinariesTestPlugin;
 import org.gradle.platform.base.BinaryType;
 import org.gradle.platform.base.BinaryTypeBuilder;
@@ -75,11 +73,6 @@ public class CUnitPlugin implements Plugin<Project> {
             }
         }
         
-        @ComponentType
-        public void registerNativeTestSuiteSpecType(ComponentTypeBuilder<NativeTestSuiteSpec> builder) {
-            builder.defaultImplementation(DefaultNativeTestSuiteSpec.class);
-        }
-
         @ComponentType
         public void registerCUnitTestSuiteSpecType(ComponentTypeBuilder<CUnitTestSuiteSpec> builder) {
         }

@@ -25,9 +25,13 @@ import org.gradle.nativeplatform.internal.NativeBinarySpecInternal;
 import org.gradle.nativeplatform.plugins.NativeComponentPlugin;
 import org.gradle.nativeplatform.tasks.InstallExecutable;
 import org.gradle.nativeplatform.test.NativeTestSuiteBinarySpec;
+import org.gradle.nativeplatform.test.NativeTestSuiteSpec;
+import org.gradle.nativeplatform.test.internal.DefaultNativeTestSuiteSpec;
 import org.gradle.nativeplatform.test.internal.NativeTestSuiteBinarySpecInternal;
 import org.gradle.nativeplatform.test.tasks.RunTestExecutable;
 import org.gradle.platform.base.BinarySpec;
+import org.gradle.platform.base.ComponentType;
+import org.gradle.platform.base.ComponentTypeBuilder;
 import org.gradle.platform.base.internal.BinaryNamingScheme;
 import org.gradle.platform.base.internal.BinarySpecInternal;
 import org.gradle.platform.base.test.TestSuiteContainer;
@@ -47,6 +51,12 @@ public class NativeBinariesTestPlugin implements Plugin<Project> {
 
     @SuppressWarnings("UnusedDeclaration")
     static class Rules extends RuleSource {
+
+        @ComponentType
+        public void registerNativeTestSuiteSpecTest(ComponentTypeBuilder<NativeTestSuiteSpec> builder) {
+            builder.defaultImplementation(DefaultNativeTestSuiteSpec.class);
+        }
+
         @Model
         void testSuites(TestSuiteContainer testSuites) {}
 

@@ -16,9 +16,8 @@
 package org.gradle.nativeplatform.internal;
 
 import org.gradle.nativeplatform.NativeExecutableSpec;
-import org.gradle.platform.base.internal.ComponentSpecInternal;
 
-public class DefaultNativeExecutableSpec extends AbstractTargetedNativeComponentSpec implements NativeExecutableSpec, ComponentSpecInternal {
+public class DefaultNativeExecutableSpec extends AbstractTargetedNativeComponentSpec implements NativeExecutableSpec {
 
     @Override
     public String getDisplayName() {

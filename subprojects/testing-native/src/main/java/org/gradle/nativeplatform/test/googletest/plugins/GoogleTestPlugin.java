@@ -27,11 +27,9 @@ import org.gradle.language.cpp.CppSourceSet;
 import org.gradle.language.cpp.plugins.CppLangPlugin;
 import org.gradle.model.*;
 import org.gradle.nativeplatform.NativeComponentSpec;
-import org.gradle.nativeplatform.test.NativeTestSuiteSpec;
 import org.gradle.nativeplatform.test.googletest.GoogleTestTestSuiteBinarySpec;
 import org.gradle.nativeplatform.test.googletest.GoogleTestTestSuiteSpec;
 import org.gradle.nativeplatform.test.googletest.internal.DefaultGoogleTestTestSuiteBinary;
-import org.gradle.nativeplatform.test.internal.DefaultNativeTestSuiteSpec;
 import org.gradle.nativeplatform.test.plugins.NativeBinariesTestPlugin;
 import org.gradle.platform.base.BinaryType;
 import org.gradle.platform.base.BinaryTypeBuilder;
@@ -67,11 +65,6 @@ public class GoogleTestPlugin implements Plugin<Project> {
                     }
                 });
             }
-        }
-
-        @ComponentType
-        public void registerNativeTestSuiteSpecTest(ComponentTypeBuilder<NativeTestSuiteSpec> builder) {
-            builder.defaultImplementation(DefaultNativeTestSuiteSpec.class);
         }
 
         @ComponentType

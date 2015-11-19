@@ -301,18 +301,18 @@ BUILD SUCCESSFUL"""
 
         and:
         buildFile << """
-            interface MySampleComponent extends ComponentSpec {}
-            class DefaultMySampleComponent extends BaseComponentSpec implements MySampleComponent {}
+            interface UnmanagedComponent extends ComponentSpec {}
+            class DefaultUnmanagedComponent extends BaseComponentSpec implements UnmanagedComponent {}
             class MyPlugin extends RuleSource {
                 @ComponentType
-                void register(ComponentTypeBuilder<MySampleComponent> builder) {
-                    builder.defaultImplementation(DefaultMySampleComponent)
+                void register(ComponentTypeBuilder<UnmanagedComponent> builder) {
+                    builder.defaultImplementation(DefaultUnmanagedComponent)
                 }
             }
             class MyOtherPlugin extends RuleSource {
                 @ComponentType
-                void register(ComponentTypeBuilder<MySampleComponent> builder) {
-                    builder.defaultImplementation(DefaultMySampleComponent)
+                void register(ComponentTypeBuilder<UnmanagedComponent> builder) {
+                    builder.defaultImplementation(DefaultUnmanagedComponent)
                 }
             }
 
@@ -326,7 +326,7 @@ BUILD SUCCESSFUL"""
         then:
         failure.assertHasDescription "A problem occurred configuring root project 'custom-component'."
         failure.assertHasCause "Exception thrown while executing model rule: MyOtherPlugin#register"
-        failure.assertHasCause "Cannot register implementation for type 'MySampleComponent' because an implementation for this type was already registered by MyPlugin#register"
+        failure.assertHasCause "Cannot register implementation for type 'UnmanagedComponent' because an implementation for this type was already registered by MyPlugin#register"
     }
 
     def buildWithCustomComponentPlugin() {

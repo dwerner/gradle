@@ -44,7 +44,8 @@ public class BinarySpecFactory extends BaseInstanceFactory<BinarySpec> {
             registration.withImplementation(Cast.<ModelType<? extends S>>uncheckedCast(implementationType), new InstanceFactory.ImplementationFactory<S>() {
                 @Override
                 public S create(ModelType<? extends S> publicType, String name, MutableModelNode binaryNode) {
-                    MutableModelNode componentNode = binaryNode.getParent().getParent();
+                    MutableModelNode componentBinariesNode = binaryNode.getParent();
+                    MutableModelNode componentNode = componentBinariesNode.getParent();
                     return Cast.uncheckedCast(BaseBinarySpec.create(
                             publicType.getConcreteClass(),
                             implementationType.getConcreteClass(),

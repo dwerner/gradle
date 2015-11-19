@@ -63,7 +63,7 @@ public class BaseBinarySpec extends AbstractBuildableModelElement implements Bin
     private boolean disabled;
 
     public static <T extends BaseBinarySpec> T create(Class<? extends BinarySpec> publicType, Class<T> implementationType,
-                                                      String name, MutableModelNode modelNode, MutableModelNode componentNode,
+                                                      String name, MutableModelNode modelNode, @Nullable MutableModelNode componentNode,
                                                       Instantiator instantiator, ITaskFactory taskFactory) {
         nextBinaryInfo.set(new BinaryInfo(name, publicType, implementationType, modelNode, componentNode, taskFactory, instantiator));
         try {
