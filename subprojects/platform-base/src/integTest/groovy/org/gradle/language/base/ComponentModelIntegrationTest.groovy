@@ -396,7 +396,7 @@ afterEach CustomComponent 'newComponent'"""
         buildFile << """
         model {
             components {
-                another(DefaultCustomComponent)
+                another(BaseComponentSpec)
             }
         }
 
@@ -405,7 +405,7 @@ afterEach CustomComponent 'newComponent'"""
         fails "model"
 
         and:
-        failure.assertThatCause(containsText("Cannot create a 'DefaultCustomComponent' because this type is not known to components. Known types are: CustomComponent"))
+        failure.assertThatCause(containsText("Cannot create a 'org.gradle.platform.base.component.BaseComponentSpec' because this type is not known to components. Known types are: CustomComponent"))
     }
 
     def "reasonable error message when creating component with no implementation"() {
@@ -697,8 +697,7 @@ afterEach CustomComponent 'newComponent'"""
             interface SampleBinarySpec extends BinarySpec {}
             class DefaultSampleBinary extends BaseBinarySpec implements SampleBinarySpec {}
 
-            interface SampleComponent extends ComponentSpec{}
-            class DefaultSampleComponent extends BaseComponentSpec implements SampleComponent {}
+            @Managed interface SampleComponent extends ComponentSpec{}
 
             class MyPlugin implements Plugin<Project> {
                 public void apply(Project project) {
@@ -714,7 +713,6 @@ afterEach CustomComponent 'newComponent'"""
                     @ComponentType
                     void registerComponent(ComponentTypeBuilder<SampleComponent> builder) {
                         println "registerComponent"
-                        builder.defaultImplementation(DefaultSampleComponent)
                     }
                 }
 
@@ -738,8 +736,7 @@ afterEach CustomComponent 'newComponent'"""
             interface SampleBinarySpec extends BinarySpec {}
             class DefaultSampleBinary extends BaseBinarySpec implements SampleBinarySpec {}
 
-            interface SampleComponent extends ComponentSpec{}
-            class DefaultSampleComponent extends BaseComponentSpec implements SampleComponent {}
+            @Managed interface SampleComponent extends ComponentSpec{}
 
             class MyPlugin implements Plugin<Project> {
                 public void apply(Project project) {
@@ -756,7 +753,6 @@ afterEach CustomComponent 'newComponent'"""
                     @ComponentType
                     void registerComponent(ComponentTypeBuilder<SampleComponent> builder) {
                         println "registerComponent"
-                        builder.defaultImplementation(DefaultSampleComponent)
                     }
                 }
 
